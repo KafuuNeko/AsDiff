@@ -1,0 +1,39 @@
+<idea-plugin>
+    <id>io.github.kafuuneko.asdiff</id>
+    <name>AsDiff</name>
+    <vendor>AsDiff Contributors</vendor>
+
+    <description><![CDATA[
+        Compare two pasted text values with the native IntelliJ Platform Diff Viewer.
+        AsDiff provides familiar line and inline highlighting, synchronized scrolling,
+        and change navigation without sending text outside the IDE.
+    ]]></description>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <actions>
+        <action id="AsDiff.CompareText"
+                class="io.github.kafuuneko.asdiff.CompareTextAction"
+                text="Compare Text..."
+                description="Compare two pasted text values">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt shift D"/>
+            <keyboard-shortcut keymap="Mac OS X" first-keystroke="ctrl alt shift D"/>
+        </action>
+        <group id="AsDiff.CompareSelectedTextGroup"
+               class="io.github.kafuuneko.asdiff.CompareSelectedTextGroup"
+               text="Compare Selected Text (Auto-format JSON)"
+               description="Compare selected text with automatic JSON formatting"
+               popup="true">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+            <action id="AsDiff.CompareSelectedText"
+                    class="io.github.kafuuneko.asdiff.CompareSelectedTextAction"
+                    text="Selection as Left..."
+                    description="Use the selection as Left and keep the previous Right text"/>
+            <action id="AsDiff.CompareSelectedTextWithClipboard"
+                    class="io.github.kafuuneko.asdiff.CompareSelectedTextWithClipboardAction"
+                    text="Selection as Left, Clipboard as Right..."
+                    description="Use the selection as Left and text from the clipboard as Right"/>
+        </group>
+    </actions>
+</idea-plugin>
