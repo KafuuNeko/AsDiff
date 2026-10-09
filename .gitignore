@@ -24,4 +24,8 @@ replay_pid*
 
 # Operating system files
 .DS_Store
+.env
+*.crt
+*.pem
+.release/
 Thumbs.db

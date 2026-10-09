@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.kafuuneko.asdiff"
-version = "1.2.0"
+version = "1.2.2"
 
 repositories {
     mavenCentral()
@@ -33,12 +33,27 @@ java {
 intellijPlatform {
     buildSearchableOptions = false
 
+    signing {
+        certificateChainFile = layout.projectDirectory.file(".release/chain.crt")
+        privateKeyFile = layout.projectDirectory.file(".release/private.pem")
+        password = providers.environmentVariable("PRIVATE_KEY_PASSWORD").orElse(
+            providers.fileContents(layout.projectDirectory.file(".release/signing-password"))
+                .asText
+                .map { it.trim() }
+        )
+    }
+
+    publishing {
+        token = providers.environmentVariable("PUBLISH_TOKEN")
+    }
+
     pluginConfiguration {
         name = "AsDiff"
 
         ideaVersion {
             sinceBuild = "261"
-            untilBuild = "261.*"
+            // Opt out of the default upper bound derived from the compile target.
+            untilBuild = provider { null }
         }
     }
 
@@ -59,4 +74,7 @@ tasks {
         useJUnitPlatform()
     }
 
+    named("verifyPluginSignature") {
+        dependsOn("signPlugin")
+    }
 }

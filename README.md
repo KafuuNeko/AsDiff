@@ -2,6 +2,8 @@
 
 AsDiff is an Android Studio plugin for comparing two pasted text values with the IDE's native Diff Viewer.
 
+[Source code](https://github.com/KafuuNeko/AsDiff) | [MIT License](LICENSE)
+
 ## Features
 
 - Two resizable, theme-aware editor panes with line numbers, paste, undo, and find support
@@ -17,6 +19,11 @@ AsDiff is an Android Studio plugin for comparing two pasted text values with the
 The comparison stays local. AsDiff does not send either input to a network service.
 
 ## Development
+
+The plugin requires IntelliJ Platform build `261` or newer, with no upper build
+limit. The compile target remains `AI-261` to preserve compatibility with the
+oldest supported platform. Future IDE releases are not blocked by their version
+number; API compatibility still needs verification against each target release.
 
 Requirements:
 
@@ -39,6 +46,11 @@ Useful tasks:
 
 The installable ZIP is generated under `build/distributions/`.
 
+To update an installed copy, open **Settings > Plugins > gear icon > Install Plugin from Disk...**,
+select the new ZIP, and restart the IDE. Version 1.2.1 removes the compatibility
+upper bound of `261.*`; the previously installed 1.2.0 must be updated
+before Android Studio's updater can recognize this compatibility change.
+
 ## Use
 
 1. Open an Android Studio project.
@@ -47,3 +59,7 @@ The installable ZIP is generated under `build/distributions/`.
 4. Edit either side if needed, then select **Compare** to open the native Diff Viewer.
 
 Inputs are stored in the current project's workspace settings so the dialog can be reopened without losing work.
+
+## License
+
+AsDiff is available under the MIT License.

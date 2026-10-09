@@ -1,13 +1,46 @@
 <idea-plugin>
     <id>io.github.kafuuneko.asdiff</id>
     <name>AsDiff</name>
-    <vendor>AsDiff Contributors</vendor>
+    <vendor url="https://github.com/KafuuNeko/AsDiff">KafuuNeko</vendor>
 
     <description><![CDATA[
-        Compare two pasted text values with the native IntelliJ Platform Diff Viewer.
-        AsDiff provides familiar line and inline highlighting, synchronized scrolling,
-        and change navigation without sending text outside the IDE.
+        <p><b>AsDiff</b> compares arbitrary text with the native IntelliJ Platform Diff Viewer,
+        providing the same focused workflow used by Android Studio for source-control changes.</p>
+
+        <h3>Compare text your way</h3>
+        <ul>
+            <li>Open <b>Tools | Compare Text...</b> and paste text into two resizable editor panes.</li>
+            <li>Select text in any editor and start a comparison from the context menu.</li>
+            <li>Use the selection as Left while keeping the previous Right value, or load Right directly from the text clipboard.</li>
+            <li>Swap or clear inputs before opening the comparison.</li>
+        </ul>
+
+        <h3>Native diff experience</h3>
+        <p>Results use the IDE's built-in Diff Viewer, including line and inline highlighting,
+        synchronized scrolling, and previous/next change navigation.</p>
+
+        <h3>JSON-aware comparison</h3>
+        <p>Valid JSON objects and arrays are automatically formatted with stable two-space indentation.
+        Invalid JSON, duplicate keys, trailing content, JSON scalar values, and ordinary text are left unchanged.</p>
+
+        <h3>Local and private</h3>
+        <p>Comparison text stays inside the IDE and is never sent to a network service.
+        Inputs are stored only in the current project's workspace settings so work can be resumed later.</p>
     ]]></description>
+
+    <change-notes><![CDATA[
+        <h3>1.2.1</h3>
+        <ul>
+            <li>Removed the IDE build upper bound so newer Android Studio versions are not blocked by a fixed compatibility range. The minimum platform build remains 261.</li>
+        </ul>
+        <h3>1.2.0</h3>
+        <ul>
+            <li>Added an editor context submenu for comparing selected text.</li>
+            <li>Added the option to use text from the clipboard as the Right input.</li>
+            <li>Added strict automatic formatting for JSON objects and arrays.</li>
+            <li>Added persistent inputs, swap and clear controls, and cross-platform shortcuts.</li>
+        </ul>
+    ]]></change-notes>
 
     <depends>com.intellij.modules.platform</depends>
 
